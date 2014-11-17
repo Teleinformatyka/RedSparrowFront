@@ -19,7 +19,7 @@
   $f3->route('GET /login',
     function($f3) {
       //$f3->set('content','subpage.htm');
-      echo View::instance()->render('login.htmy');
+      echo View::instance()->render('login.html');
     }
   );
 
