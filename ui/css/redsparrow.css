@@ -1,0 +1,10 @@
+.btn-redsparrow
+{
+	background-color: #d80f3b;
+	border-color: #ba0b31;
+}
+
+.btn-redsparrow:hover
+{
+	background-color: #ba0b31;
+}
