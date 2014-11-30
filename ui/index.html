@@ -281,6 +281,8 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+                           
+                             
                             <div id="morris-area-chart"></div>
                         </div>
                         <!-- /.panel-body -->
@@ -288,15 +290,16 @@
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Statystyki 
                             <div class="pull-right">
                                 <div class="btn-group">
+                                   
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
                                         Actions
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
+                                        <li><a id='hstats_href' href="#">Action</a>
                                         </li>
                                         <li><a href="#">Another action</a>
                                         </li>
@@ -311,6 +314,9 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+                              <div id='dstat' >
+                                         <div id="plagism-bar-chart"></div>
+                                    </div>
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="table-responsive">
@@ -375,6 +381,7 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    
                                     <!-- /.table-responsive -->
                                 </div>
                                 <!-- /.col-lg-4 (nested) -->
@@ -457,12 +464,15 @@
                             <!-- /.list-group -->
                             <a href="#" class="btn btn-default btn-block">Pokaż starsze zdarzenia</a>
                         </div>
+
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
                 </div>
+
                 <!-- /.col-lg-4 -->
             </div>
+
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
@@ -471,7 +481,7 @@
     <!-- /#wrapper -->
 
     <!-- jQuery Version 1.11.0 -->
-    <script src="ui/js/jquery-1.11.0.js"></script>
+    <script src="ui/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="ui/js/bootstrap.min.js"></script>
@@ -482,7 +492,9 @@
     <!-- Morris Charts JavaScript -->
     <script src="ui/js/plugins/morris/raphael.min.js"></script>
     <script src="ui/js/plugins/morris/morris.min.js"></script>
-    <script src="ui/js/plugins/morris/morris-data.js"></script>
+     <script src="ui/js/plugins/morris/charts.js"></script>
+     <script src="ui/js/morris/stats_handler.js"></script>
+  <!--   // <script src="ui/js/plugins/morris/morris-data.js"></script> -->
 
     <!-- Custom Theme JavaScript -->
     <script src="ui/js/sb-admin-2.js"></script>
