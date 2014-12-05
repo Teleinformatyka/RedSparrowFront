@@ -45,7 +45,13 @@ class ZMQMessage {
       $response = $this->m_socket->recv();
       
       if(is_string($response)){
-        return json_decode($response, true);
+        $depth = 0;
+        
+        while(!is_array($response) && $depth <= 10){
+          $response = json_decode($response, true);
+        }
+        
+        return $response;
       }
     }
     

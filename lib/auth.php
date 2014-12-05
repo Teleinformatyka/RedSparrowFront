@@ -52,7 +52,7 @@ class Auth {
       return false;
     }
     
-    return (bool) ($response['login'] == $id && $response['password'] == md5($pw));
+    return (bool) ($response['result']['login'] == $id && $response['result']['password'] == md5($pw));
   }
   
   /**
@@ -245,7 +245,7 @@ class Auth {
   *  @param $args array
   **/
   function __construct($storage,array $args=NULL) {
-    if (is_object($storage) && is_a($storage,'DB\Cursor')) {
+    if (is_object($storage)/* && is_a($storage,'DB\Cursor')*/) {
       $this->storage=$storage->dbtype();
       $this->mapper=$storage;
       unset($ref);
