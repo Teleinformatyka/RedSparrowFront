@@ -1,9 +1,14 @@
-<?php namespace Thesis; use \View as View;
+<?php namespace Thesis; use \View as View; use \Session as Session;
 
 class Index {
   public static function handle($f3){
-    $f3->set('variable', 'Test');
-    echo View::instance()->render('showThesesBase.html');
+    new Session();
+    
+    if($f3->exists('SESSION.verified')){
+      echo View::instance()->render('showThesesBase.html');
+    } else {
+      $f3->reroute('/login');
+    }
   }
 }
 

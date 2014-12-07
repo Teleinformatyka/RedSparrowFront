@@ -4,6 +4,7 @@
   
   $f3->set('DEBUG', 1);
   $f3->set('AUTOLOAD', 'controllers/');
+  $f3->set('CACHE','memcache=localhost');
   
   /* Routers */
   $f3->route('GET|POST /', 'Index::handle');
