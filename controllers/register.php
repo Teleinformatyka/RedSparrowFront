@@ -31,10 +31,6 @@ class Register {
       $surname =    $f3->get('POST.surname');
       $email =      $f3->get('POST.email');
       
-      if(!isset($login) || !isset($password01) || !isset($password02) || !isset($name) || !isset($surname) || !isset($email)){
-        return Register::error($f3, Register::ERROR_NOT_EVERYTHING_ISSET);
-      }
-      
       if($password01 != $password02){
         return Register::error($f3, Register::ERROR_PASSWORDS_NOT_EQUAL);
       }
@@ -79,7 +75,7 @@ class Register {
       }
       
       /* Check if response is OK */
-      // TODO
+      echo print_r($response);
     }
     
     echo View::instance()->render('register.html');   
