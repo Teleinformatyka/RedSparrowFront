@@ -25,8 +25,8 @@ class Register {
   public static function handle($f3){   
     if($f3->exists('POST.submit')){
       $login =      $f3->get('POST.login');
-      $password01 = $f3->get('POST.login')
-      $password02 = $f3->get('POST.login')
+      $password01 = $f3->get('POST.login');
+      $password02 = $f3->get('POST.login');
       $name =       $f3->get('POST.name');
       $surname =    $f3->get('POST.surname');
       $email =      $f3->get('POST.email');
@@ -70,7 +70,7 @@ class Register {
         'id' => 1
       );
       
-      $msg = new new ZMQMessage();
+      $msg = new ZMQMessage();
       $msg->send($raw);
       $response = $msg->recv();
       
