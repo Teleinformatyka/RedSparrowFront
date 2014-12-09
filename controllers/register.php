@@ -32,31 +32,31 @@ class Register {
       $email =      $f3->get('POST.email');
       
       if(!isset($login) || !isset($password01) || !isset($password02) || !isset($name) || !isset($surname) || !isset($email)){
-        return Register::error($f3, ERROR_NOT_EVERYTHING_ISSET);
+        return Register::error($f3, Register::ERROR_NOT_EVERYTHING_ISSET);
       }
       
       if($password01 != $password02){
-        return Register::error($f3, ERROR_PASSWORDS_NOT_EQUAL);
+        return Register::error($f3, Register::ERROR_PASSWORDS_NOT_EQUAL);
       }
       
       if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        return Register::error($f3, ERROR_INVALID_EMAIL);
+        return Register::error($f3, Register::ERROR_INVALID_EMAIL);
       }
       
       if(strlen($login) < Register::MIN_LOGIN_LENGTH || strlen($login) > Register::MAX_LOGIN_LENGTH){
-        return Register::error($f3, ERROR_INVALID_LOGIN);
+        return Register::error($f3, Register::ERROR_INVALID_LOGIN);
       }
       
       if(strlen($password01) < Register::MIN_PASSWORD_LENGTH || strlen($password01) > Register::MAX_PASSWORD_LENGTH){
-        return Register::error($f3, ERROR_INVALID_PASSWORD);
+        return Register::error($f3, Register::ERROR_INVALID_PASSWORD);
       }
       
       if(strlen($name) < Register::MIN_NAME_LENGTH || strlen($name) > Register::MAX_NAME_LENGTH){
-        return Register::error($f3, ERROR_INVALID_NAME);
+        return Register::error($f3, Register::ERROR_INVALID_NAME);
       }
       
       if(strlen($surname) < Register::MIN_SURNAME_LENGTH || strlen($surname) > Register::MAX_SURNAME_LENGTH){
-        return Register::error($f3, ERROR_INVALID_SURNAME);
+        return Register::error($f3, Register::ERROR_INVALID_SURNAME);
       }
       
       /* Hash */
@@ -75,7 +75,7 @@ class Register {
       $response = $msg->recv();
       
       if(!is_array($response)){
-        return Register::error($f3, ERROR_INVALID_RESPONSE);
+        return Register::error($f3, Register::ERROR_INVALID_RESPONSE);
       }
       
       /* Check if response is OK */
