@@ -1,5 +1,4 @@
 <?php
-
 require_once('lib/zmq.php');
 
 class Login {
