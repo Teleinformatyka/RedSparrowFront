@@ -1,5 +1,5 @@
 <?php
-require_once '../lib/zmq.php';
+require_once('../lib/zmq.php');
 
 
   $message = array(
@@ -8,12 +8,11 @@ require_once '../lib/zmq.php';
       'params' => array('login' => 'aldor', 'password' => 'aldor', 'email' => 'aldor', 'name' => 'aldor', 'surname' => 'aldor')
   );
 
-  $zmq = new ZMQMessage();
+  $zmq = new ZMQMessage('tcp://178.238.41.170:5555');
 
   // Send message to the server
-  $zmq->connect('tcp://127.0.0.1:5555');
   $zmq->send($message);
-  echo $zmq->recv();
+  print_r($zmq->recv());
   $message = array(
       'id' => 1,
       'method' => 'login',
@@ -21,6 +20,6 @@ require_once '../lib/zmq.php';
   );
   echo "\n----------------------\n";
   $zmq->send($message);
-  echo $zmq->recv();
+  print_r($zmq->recv());
 
 
