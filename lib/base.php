@@ -1539,6 +1539,18 @@ class Base extends Prefab {
 					'</span>';
 		return $out?('<code>'.$out.'</code>'):$text;
 	}
+  
+  /**
+	*	Check whether size of the string is between given values
+	*	@return integer
+	*	@param $string string
+  *	@param $limits array
+	**/
+	function between($string, $limits) {
+		$length = strlen($string);
+    
+    return $length >= $limits[0] && $length <= $limits[1];
+	}
 
 	/**
 	*	Dump expression with syntax highlighting
