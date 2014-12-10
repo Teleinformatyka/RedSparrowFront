@@ -1,4 +1,5 @@
 <?php
+
 require_once('lib/zmq.php');
 
 class Login {
@@ -7,7 +8,6 @@ class Login {
     $auth = new \Auth(new ZMQMessage());
     
     if($f3->exists('POST.submit')){
-      $f3->set('attempt', true);
       if($auth->login($f3->get('POST.login'), $f3->get('POST.password'))){
         /* Session variables */
         $f3->set('SESSION.user', $f3->get('POST.login'));
