@@ -1,25 +1,21 @@
 <?php
-
 require_once('lib/zmq.php');
+
+require_once('models/user.php');
 
 class Login {
   public static function handle($f3){
     new Session();
-    $auth = new \Auth(new ZMQMessage());
     
     if($f3->exists('POST.submit')){
-      if($auth->login($f3->get('POST.login'), $f3->get('POST.password'))){
+      $user = User::load($f3->get('POST.login'), $f3->get('POST.password'));
+      if($user->exists()){
         /* Session variables */
-        $f3->set('SESSION.user', $f3->get('POST.login'));
-        $f3->set('SESSION.password', $f3->get('POST.password'));
+        $f3->set('SESSION.user', $user->get('login'));
         $f3->set('SESSION.verified', true);
-        
-        /* Template variables */
-        $f3->set('successful', true);
-      } else {
-        /* Template variables */
-        $f3->set('successful', false);
       }
+      
+      $f3->set('successful', $user->exists());
     }
     
     if($f3->exists('SESSION.verified')){
