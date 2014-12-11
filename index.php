@@ -10,6 +10,7 @@
   $f3->route('GET|POST /', 'Index::handle');
   $f3->route('GET|POST /login', 'Login::handle');
   $f3->route('GET|POST /register', 'Register::handle');
+  $f3->route('GET|POST /profile', 'Profile::handle');
   $f3->route('GET|POST /thesis', 'Thesis\Index::handle');
   $f3->route('GET|POST /thesis/add', 'Thesis\Add::handle');
   
