@@ -24,5 +24,8 @@ $(function() {
         if (height > topOffset) {
             $("#page-wrapper").css("min-height", (height) + "px");
         }
-    })
+    });
+    $(".btn-back-to-index").click(function () {
+        location.href='/';
+    });
 });

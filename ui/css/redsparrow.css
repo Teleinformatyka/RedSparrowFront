@@ -8,3 +8,8 @@
 {
 	background-color: #ba0b31;
 }
+.center-content {
+	 margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+}
