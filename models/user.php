@@ -14,9 +14,9 @@ class User {
       array( 
         'login'     => array('min' => 3, 'max' => 32, 'error' => Error::INVALID_LOGIN),
         'password'  => array('min' => 3, 'max' => 32, 'error' => Error::INVALID_PASSWORD),
-        'email'     => array('min' => 0, 'max' => 32, 'error' => Error::INVALID_EMAIL, 'validate' => function($v, $min, $max){return filter_var($v, FILTER_VALIDATE_EMAIL);}),
-        'name'      => array('min' => 2, 'max' => 32, 'error' => Error::INVALID_NAME, 'validate' => function($v, $min, $max){return preg_match('/^[A-Z][a-z]{'.$min.','.$max.'}$/', $v) == 1;}),
-        'surname'   => array('min' => 2, 'max' => 32, 'error' => Error::INVALID_SURNAME, 'validate' => function($v, $min, $max){return preg_match('/^[A-Z][a-z]{'.$min.','.$max.'}$/', $v) == 1;})
+        'email'     => array('min' => 0, 'max' => 32, 'error' => Error::INVALID_EMAIL, 'procedure' => function($v, $min, $max){return filter_var($v, FILTER_VALIDATE_EMAIL);}),
+        'name'      => array('min' => 2, 'max' => 32, 'error' => Error::INVALID_NAME, 'procedure' => function($v, $min, $max){return preg_match('/^[A-Z][a-z]{'.$min.','.$max.'}$/', $v) == 1;}),
+        'surname'   => array('min' => 2, 'max' => 32, 'error' => Error::INVALID_SURNAME, 'procedure' => function($v, $min, $max){return preg_match('/^[A-Z][a-z]{'.$min.','.$max.'}$/', $v) == 1;})
       );
   }
   
@@ -137,11 +137,23 @@ class User {
       if(isset($this->validator[$k])){
         $validator = $this->validator[$k];
         
-        if(isset($validator['validate'])){
-          if(!$validator['validate']($v, $validator['min'], $validator['max'])){
-            $error = $validator['error'];
+        /* Validator internal limits */
+        $min = $validator['min'];
+        $max = $validator['max'];
+        
+        $validate = function($v, $min, $max){
+          if(strlen($v) < $min || strlen($v) > $max){
+            return false;
           }
-        } else if(strlen($v) < $validator['min'] || strlen($v) > $validator['max']){
+          
+          return true;
+        };
+        
+        if(isset($validator['procedure'])){
+          $validate = $validator['procedure'];
+        }
+        
+        if(!$validate($v, $min, $max)){
           $error = $validator['error'];
         }
       }
