@@ -97,11 +97,15 @@ class User {
     return $object;
   }
   
-  public static function load($login, $password){
+  public static function load($login, $password, $hash = true){
     $object = new User();
     
     $object->m_vars['login']    = $login;
-    $object->m_vars['password'] = $object->__hash($password);
+    $object->m_vars['password'] = $password;
+    
+    if($hash){
+      $object->m_vars['password'] = $object->__hash($password);
+    }
     
     $object->__load();
     
