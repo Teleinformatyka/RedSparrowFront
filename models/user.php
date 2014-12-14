@@ -101,11 +101,7 @@ class User {
     $object = new User();
     
     $object->m_vars['login']    = $login;
-    $object->m_vars['password'] = $password;
-    
-    if($hash){
-      $object->m_vars['password'] = $object->__hash($password);
-    }
+    $object->m_vars['password'] = $hash ? $object->__hash($password) : $password;
     
     $object->__load();
     
