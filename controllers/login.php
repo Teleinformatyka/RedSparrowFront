@@ -11,7 +11,8 @@ class Login {
       $user = User::load($f3->get('POST.login'), $f3->get('POST.password'));
       if($user->exists()){
         /* Session variables */
-        $f3->set('SESSION.user', $user->get('login'));
+        $f3->set('SESSION.login', $f3->get('POST.login'));
+        $f3->set('SESSION.password', $f3->get('POST.password'));
         $f3->set('SESSION.verified', true);
       }
       
