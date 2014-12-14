@@ -20,10 +20,6 @@ class User {
       );
   }
   
-  public function get_user_info() {
-
-  }
-
   private function __hash($v){
     return md5($v);
   }
@@ -111,7 +107,7 @@ class User {
     
     return $object;
   }
-
+  
   public function set($key, $value){
     if(isset($this->m_vars[$key])){
       if($key == 'password'){
