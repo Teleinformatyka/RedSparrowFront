@@ -18,7 +18,7 @@ class Register {
       }
     }
     
-    if($f3->get('error_code') == Error::NO_ERROR){
+    if($f3->get('error_code') === Error::NO_ERROR){
       /* Re-route to login form */
       $f3->reroute('/login');
     } else {  
