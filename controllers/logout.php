@@ -3,7 +3,7 @@ require_once('lib/zmq.php');
 
 require_once('models/user.php');
 
-class Login {
+class Logout {
   public static function handle($f3){
     new Session();
     
