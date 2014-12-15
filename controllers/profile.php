@@ -21,25 +21,22 @@ class Profile {
       $hash  = $f3->get('SESSION.password');
       $user = User::load($login, $hash, false);;
       if($user->exists()) {
+        $userlogin = $user->get('login');
+        $username = $user->get('name');
+        $usersurname = $user->get('surname');
+        $level = $user->get('level');
+        $email = $user->get('email');
 
-         $userlogin = $user->get('login');
-         $username = $user->get('name');
-         $usersurname = $user->get('surname');
-         $level = $user->get('level');
-         $email = $user->get('email');
-
-         // set data.
-         $f3->set('userlogin', $userlogin);
-         $f3->set('usersurname', $usersurname);
-         $f3->set('username', $username);
-         $f3->set('level', $level);
-         $f3->set('email', $email);
+        // set data.
+        $f3->set('userlogin', $userlogin);
+        $f3->set('usersurname', $usersurname);
+        $f3->set('username', $username);
+        $f3->set('level', $level);
+        $f3->set('email', $email);
 
           // render profile.html.
 		$template = new Template;
-		echo $template->render('headerTemplate.html');
 		echo $template->render('profile.html');
-		echo $template->render('footerTemplate.html');
       } else {
         $f3->reroute('/error');
       }

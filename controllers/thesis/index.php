@@ -5,10 +5,8 @@ class Index {
     new Session();
     
     if($f3->exists('SESSION.verified')){
-		$template = new Template;
-		echo $template->render('headerTemplate.html');
-		echo $template->render('showThesesBase.html');
-		echo $template->render('footerTemplate.html');
+      $template = new Template;
+      echo $template->render('showThesesBase.html');
     } else {
       $f3->reroute('/login');
     }
