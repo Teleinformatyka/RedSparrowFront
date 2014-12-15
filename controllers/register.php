@@ -23,9 +23,10 @@ class Register {
       $f3->reroute('/login');
     } else {  
       /* Register form */
-	  echo View::instance()->render('headerTemplate.html');
-      echo View::instance()->render('register.html');
-	  echo View::instance()->render('footerTemplate.html');
+		$template = new Template;
+		echo $template->render('headerTemplate.html');
+		echo $template->render('register.html');
+		echo $template->render('footerTemplate.html');
     }
   }
 }

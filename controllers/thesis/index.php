@@ -5,10 +5,10 @@ class Index {
     new Session();
     
     if($f3->exists('SESSION.verified')){
-	  $f3->set('nav', View::instance()->render('navigationTemplate.html'));
-	  echo View::instance()->render('headerTemplate.html');
-      echo View::instance()->render('showThesesBase.html');
-	  echo View::instance()->render('footerTemplate.html');
+		$template = new Template;
+		echo $template->render('headerTemplate.html');
+		echo $template->render('showThesesBase.html');
+		echo $template->render('footerTemplate.html');
     } else {
       $f3->reroute('/login');
     }

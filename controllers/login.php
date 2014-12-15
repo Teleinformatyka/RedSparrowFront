@@ -22,9 +22,10 @@ class Login {
     if($f3->exists('SESSION.verified')){
       $f3->reroute('/thesis');
     } else {
-	  echo View::instance()->render('headerTemplate.html');
-      echo View::instance()->render('login.html');
-	  echo View::instance()->render('footerTemplate.html');
+		$template = new Template;
+		echo $template->render('headerTemplate.html');
+		echo $template->render('login.html');
+		echo $template->render('footerTemplate.html');
     }
   }
 }
