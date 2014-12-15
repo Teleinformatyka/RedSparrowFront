@@ -5,6 +5,7 @@ class Index {
     $f3->set('variable', 'Test');
 	echo View::instance()->render('headerTemplate.html');
     echo View::instance()->render('index.html');
+	echo View::instance()->render('footerTemplate.html');
   }
 }
 

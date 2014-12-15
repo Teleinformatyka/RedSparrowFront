@@ -24,6 +24,7 @@ class Login {
     } else {
 	  echo View::instance()->render('headerTemplate.html');
       echo View::instance()->render('login.html');
+	  echo View::instance()->render('footerTemplate.html');
     }
   }
 }

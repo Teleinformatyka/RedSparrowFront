@@ -38,6 +38,7 @@ class Profile {
           // render profile.html.
 		 echo View::instance()->render('headerTemplate.html');
          echo View::instance()->render('profile.html');
+		 echo View::instance()->render('footerTemplate.html');
       } else {
         $f3->reroute('/error');
       }
