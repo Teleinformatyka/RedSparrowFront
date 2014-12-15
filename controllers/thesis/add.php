@@ -1,9 +1,8 @@
-<?php namespace Thesis; use \View as View; use \Template as Template;
+<?php namespace Thesis; use \View as View; use \Session as Session; use \Template as Template; use \StaticClass as StaticClass;
 
-class Add {
+class Add extends StaticClass {
   public static function handle($f3){
-    $template = new Template;
-    echo $template->render('addThesis.html');
+    echo Template::instance()->render('addThesis.html');
   }
 }
 

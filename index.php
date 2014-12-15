@@ -3,7 +3,7 @@
   $f3->config('config.ini');
   
   $f3->set('DEBUG', 1);
-  $f3->set('AUTOLOAD', 'controllers/');
+  $f3->set('AUTOLOAD', 'controllers/ ; models/');
   $f3->set('CACHE','memcache=localhost');
   
   /* Routers */

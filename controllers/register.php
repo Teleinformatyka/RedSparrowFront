@@ -1,10 +1,6 @@
 <?php
-require_once('lib/zmq.php');
-require_once('lib/error.php');
 
-require_once('models/user.php');
-
-class Register {
+class Register extends StaticClass {
   public static function handle($f3){
     if($f3->exists('POST.submit')){
       if($f3->get('POST.password1') != $f3->get('POST.password2')){
@@ -23,8 +19,7 @@ class Register {
       $f3->reroute('/login');
     } else {  
       /* Register form */
-      $template = new Template;
-      echo $template->render('register.html');
+      echo Template::instance()->render('register.html');
     }
   }
 }

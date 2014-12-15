@@ -1,9 +1,6 @@
 <?php
-require_once('lib/zmq.php');
 
-require_once('models/user.php');
-
-class Login {
+class Login extends StaticClass {
   public static function handle($f3){
     new Session();
     
@@ -22,8 +19,7 @@ class Login {
     if($f3->exists('SESSION.verified')){
       $f3->reroute('/thesis');
     } else {
-      $template = new Template;
-      echo $template->render('login.html');
+      echo Template::instance()->render('login.html');
     }
   }
 }

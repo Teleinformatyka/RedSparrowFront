@@ -1,10 +1,8 @@
 <?php
-require_once('lib/zmq.php');
-class ErrorView {
+
+class ErrorView extends StaticClass {
   public static function handle($f3) {
-    $f3->set('variable', 'Test');
-    $template = new Template;
-    echo $template->render('error.html');
+    echo Template::instance()->render('error.html');
   }
 }
 
