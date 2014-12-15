@@ -1,4 +1,4 @@
-<?php namespace Thesis; use \View as View; use \Session as Session;
+<?php namespace Thesis; use \View as View; use \Session as Session; use \Template as Template;
 
 class Index {
   public static function handle($f3){

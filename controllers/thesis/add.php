@@ -1,4 +1,4 @@
-<?php namespace Thesis; use \View as View;
+<?php namespace Thesis; use \View as View; use \Template as Template;
 
 class Add {
   public static function handle($f3){
