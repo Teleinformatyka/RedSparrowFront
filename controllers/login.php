@@ -22,6 +22,7 @@ class Login {
     if($f3->exists('SESSION.verified')){
       $f3->reroute('/thesis');
     } else {
+	  echo View::instance()->render('headerTemplate.html');
       echo View::instance()->render('login.html');
     }
   }

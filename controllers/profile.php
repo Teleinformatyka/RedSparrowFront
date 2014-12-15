@@ -36,6 +36,7 @@ class Profile {
          $f3->set('email', $email);
 
           // render profile.html.
+		 echo View::instance()->render('headerTemplate.html');
          echo View::instance()->render('profile.html');
       } else {
         $f3->reroute('/error');

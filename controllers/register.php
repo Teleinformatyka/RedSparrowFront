@@ -23,6 +23,7 @@ class Register {
       $f3->reroute('/login');
     } else {  
       /* Register form */
+	  echo View::instance()->render('headerTemplate.html');
       echo View::instance()->render('register.html');
     }
   }
