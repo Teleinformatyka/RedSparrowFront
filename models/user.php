@@ -1,6 +1,4 @@
 <?php
-require_once('lib/error.php');
-require_once('lib/zmq.php');
 
 class User {
   private $validator;
