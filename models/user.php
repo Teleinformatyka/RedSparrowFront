@@ -31,7 +31,7 @@ class User {
         'login'     => $this->m_vars['login'],
         'password'  => $this->m_vars['password']
       ),
-      'id' => 1
+      'id' => mt_rand(1, 65537)
     );
     
     $zmq = new ZMQMessage();
@@ -39,14 +39,7 @@ class User {
     
     $response = $zmq->recv();
     if($response['id'] == $raw['id'] && $response['error'] == NULL){
-      $this->m_vars['login']    = $response['result']['login'];
-      $this->m_vars['password'] = $response['result']['password'];
-      $this->m_vars['email']    = $response['result']['email'];
-      $this->m_vars['name']     = $response['result']['name'];
-      $this->m_vars['surname']  = $response['result']['surname'];
-      $this->m_vars['theses']   = $response['result']['theses'];
-      $this->m_vars['levels']   = $response['result']['levels'];
-    
+      $this->m_vars = $response['result'];
       $this->m_exists = true;
     }
   }
@@ -68,7 +61,7 @@ class User {
           'name'      => $this->m_vars['name'], 
           'surname'   => $this->m_vars['surname']
         ),
-        'id' => 1
+        'id' => mt_rand(1, 65537)
       );
     }
     
