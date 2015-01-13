@@ -15,11 +15,17 @@ class Login extends StaticClass {
       
       $f3->set('successful', $user->exists());
     }
+	else
+	{
+	  echo Template::instance()->render('login.html');
+	}
     
     if($f3->exists('SESSION.verified')){
       $f3->reroute('/thesis');
-    } else {
-      echo Template::instance()->render('login.html');
+    } else if($f3->exists('POST.submit')) {
+      /* Error view */
+	  $f3->set('error', "Błąd logowania.");
+      echo Template::instance()->render('error.html'); 
     }
   }
 }
