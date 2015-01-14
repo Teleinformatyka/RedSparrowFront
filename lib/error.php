@@ -11,7 +11,8 @@ class Error {
     INVALID_NAME         = 6,
     INVALID_SURNAME      = 7,
     INVALID_RESPONSE     = 8,
-    ALREADY_REGISTERED   = 9;
+    ALREADY_REGISTERED   = 9,
+    USER_DOES_NOT_EXIST  = 10;
 }
 
 ?>

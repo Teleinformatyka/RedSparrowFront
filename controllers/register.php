@@ -12,20 +12,19 @@ class Register extends StaticClass {
         /* Register user with save function */;
         $f3->set('error_code', $user->save());
       }
+      
+      if($f3->get('error_code') !== Error::NO_ERROR){
+        $f3->set('error', $f3->get('error_code'));
+        echo Template::instance()->render('error.html'); 
+      }
     }
-	else
-	{
-	  /* Register form */
-	  echo Template::instance()->render('register.html');
-	}
     
     if($f3->get('error_code') === Error::NO_ERROR){
       /* Re-route to login form */
       $f3->reroute('/login');
-    } else {  
-      /* Error view */
-	  $f3->set('error', "Podczas rejestracji podano niepoprawne dane.");
-      echo Template::instance()->render('error.html'); 
+    } else {
+      /* Register form */
+      echo Template::instance()->render('register.html');
     }
   }
 }
