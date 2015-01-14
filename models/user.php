@@ -46,12 +46,19 @@ class User {
   
   private function __save(){
     /* Save using ZMQ message */  
-    $raw = array();
+    $messages = array();
     
     if($this->m_exists){
-      // TODO
+      foreach($this->m_vars as $key => $value){
+        $messages[] = array(
+          'jsonrpc' => '2.0', 
+          'method' => 'usermethods-edit_user', 
+          'params' => array('columnName' => $key, 'value' => $value, 'userId' => $this->get('id')),
+          'id' => mt_rand(1, 65537)
+        );
+      }
     } else {
-      $raw = array(
+      $messages[] = array(
         'jsonrpc' => '2.0',
         'method'  => 'register',
         'params'  => array(
@@ -66,11 +73,15 @@ class User {
     }
     
     $zmq = new ZMQMessage();
-    $zmq->send($raw);
-    
-    $response = $zmq->recv();
-    if($response['id'] == $raw['id'] && $response['error'] == NULL){
-      $this->m_exists = true;
+    foreach($messages as $message){
+      $zmq->send($message);    
+      $response = $zmq->recv();
+      
+      if($response['id'] == $message['id'] && $response['error'] == NULL){
+        $this->m_exists = true;
+      } else {
+        break;
+      }
     }
     
     return $this->m_exists ? Error::NO_ERROR : Error::INVALID_RESPONSE;
