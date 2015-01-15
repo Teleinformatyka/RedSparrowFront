@@ -10,6 +10,12 @@ class Profile extends StaticClass {
       $user = User::load($login, $hash, false);  
       
       if($user->exists()){
+        /* Template variables */
+        $f3->set('userlogin', $user->get('login'));
+        $f3->set('usersurname', $user->get('name'));
+        $f3->set('username', $user->get('surname'));
+        $f3->set('email', $user->get('email'));
+        
         if($f3->get('POST.edit')){
           $user->set('name', $f3->get('POST.newname'));
           $user->set('surname', $f3->get('POST.newsurname'));
@@ -18,12 +24,6 @@ class Profile extends StaticClass {
           /* Save user */
           $f3->set('error', $user->save());
         }
-        
-        /* Template variables */
-        $f3->set('userlogin', $user->get('login'));
-        $f3->set('usersurname', $user->get('name'));
-        $f3->set('username', $user->get('surname'));
-        $f3->set('email', $user->get('email'));
 
         echo Template::instance()->render('profile.html');
       } else {

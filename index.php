@@ -8,7 +8,6 @@
   
   /* Routers */
   $f3->route('GET|POST /', 'Index::handle');
-  $f3->route('GET|POST /error', 'ErrorView::handle');
   $f3->route('GET|POST /login', 'Login::handle');
   $f3->route('GET|POST /logout', 'Logout::handle');
   $f3->route('GET|POST /register', 'Register::handle');

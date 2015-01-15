@@ -12,12 +12,8 @@ class Login extends StaticClass {
         $f3->set('SESSION.password', $user->get('password'));
         $f3->set('SESSION.verified', true);
       } else {
-        /* Error view */
         $f3->set('error', Error::USER_DOES_NOT_EXIST);
-        echo Template::instance()->render('error.html'); 
       }
-      
-      $f3->set('successful', $user->exists());
     }
     
     if($f3->exists('SESSION.verified')){
