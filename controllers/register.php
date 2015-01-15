@@ -9,12 +9,8 @@ class Register extends StaticClass {
         /* Create user */
         $user = User::create($f3->get('POST.login'), $f3->get('POST.password1'), $f3->get('POST.email'), $f3->get('POST.name'), $f3->get('POST.surname'));
         
-        /* Register user with save function */;
+        /* Register user with save function */
         $f3->set('error', $user->save());
-      }
-      
-      if($f3->get('error') !== Error::NO_ERROR){
-        echo Template::instance()->render('error.html'); 
       }
     }
     

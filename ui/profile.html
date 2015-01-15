@@ -1,35 +1,45 @@
-		<include href="headerTemplate.html" />
+<include href="headerTemplate.html" />
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4">
-                    <div class="login-panel panel panel-default">
-                        <img src="ui/images/redsparrow.png" style="width: 100%;" />
-                        <div class="panel-body">
-                         
-                            <div><h2>Witaj <spna class="user-name">{{ @username }} !</h2><div>
-                            <div><p><strong>Imie: </strong><span class="user-level"> {{ @username }} </span></p><div>
-                            <div><p><strong>Nazwisko: </strong><span class="user-level"> {{ @usersurname }} </span></p><div>
-                            <div><p><strong>Level: </strong><span class="user-level"> {{ @level }} </span></p><div>
-                            <div><p><strong>Email: </strong><span class="email-address">  {{ @email }} </span></p><div>
-                       
-                        <div class="clearfix"></div>
-                        <div class="center-content">
-                            <div class="col-xs-12 col-sm-8">
-                                <h2><strong>Powrót</strong></h2>                    
-                                <p><small>do strony głównej</small></p>
-                                <button class="btn btn-success btn-block btn-back-to-index"><span class="fa fa-plus-circle"></span> Powrót </button>
-                            </div>
-                           <!--  <div class="col-xs-12 col-sm-8">
-                                <h2><strong>Change</strong></h2>                    
-                                <p><small>change your data</small></p>
-                                <button class="btn btn-info btn-block"><span class="fa fa-user"></span>Edit</button>
-                            </div>--> 
-                        </div>
-                    </div><!--/panel-body-->
-                </div><!--/panel-->
-            </div><!--/col--> 
-        </div><!--/row--> 
-    </div><!--/container--> 
-	
-	<include href="footerTemplate.html" />
+<check if="{{ isset(@error) }}">
+  <check if="{{ @error != Error::NO_ERROR }}">
+    <true>
+      <include href="error.html"/>
+    </true>
+    <false>
+      <set success="Pomyślnie edytowano dane użytkownika!"/>
+      <include href="success.html"/>
+    </false>
+  </check>
+</check>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+    <div class="login-panel panel panel-default">
+      <img src="ui/images/redsparrow.png" style="width: 100%;" />
+      <div class="panel-body">
+        <div><h2>Witaj <spna class="user-name">{{ @username }} !</h2></div>
+        <div><p><strong>Imie: </strong><span class="user-level"> {{ @username }} </span></p></div>
+        <div><p><strong>Nazwisko: </strong><span class="user-level"> {{ @usersurname }} </span></p></div>
+        <div><p><strong>Email: </strong><span class="email-address">  {{ @email }} </span></p></div>
+
+        <div class="clearfix"></div>
+        <div class="center-content">
+        <div class="col-xs-12 col-sm-8">
+        <h2><strong>Powrót</strong></h2>
+        <p><small>do strony głównej</small></p>
+        <button class="btn btn-success btn-block btn-back-to-index"><span class="fa fa-plus-circle"></span> Powrót </button>
+        </div>
+        <!--  <div class="col-xs-12 col-sm-8">
+        <h2><strong>Change</strong></h2>
+        <p><small>change your data</small></p>
+        <button class="btn btn-info btn-block"><span class="fa fa-user"></span>Edit</button>
+        </div>--> 
+        </div>
+      </div><!--/panel-body-->
+    </div><!--/panel-->
+    </div><!--/col--> 
+  </div><!--/row--> 
+</div><!--/container--> 
+
+<include href="footerTemplate.html" />

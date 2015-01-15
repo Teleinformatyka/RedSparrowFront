@@ -6,32 +6,32 @@ class Profile extends StaticClass {
     
     if($f3->get('SESSION.verified')){
       $login = $f3->get('SESSION.login');
-      $hash  = $f3->get('SESSION.password');
-      $user = User::load($login, $hash, false);
+      $hash = $f3->get('SESSION.password');  
+      $user = User::load($login, $hash, false);  
       
       if($user->exists()){
-        $userlogin = $user->get('login');
-        $username = $user->get('name');
-        $usersurname = $user->get('surname');
-        $level = $user->get('level');
-        $email = $user->get('email');
+        /* Template variables */
+        $f3->set('userlogin', $user->get('login'));
+        $f3->set('usersurname', $user->get('name'));
+        $f3->set('username', $user->get('surname'));
+        $f3->set('email', $user->get('email'));
+        
+        if($f3->get('POST.edit')){
+          $user->set('name', $f3->get('POST.newname'));
+          $user->set('surname', $f3->get('POST.newsurname'));
+          $user->set('email', $f3->get('POST.newemail'));
+          
+          /* Save user */
+          $f3->set('error', $user->save());
+        }
 
-        // set data.
-        $f3->set('userlogin', $userlogin);
-        $f3->set('usersurname', $usersurname);
-        $f3->set('username', $username);
-        $f3->set('level', $level);
-        $f3->set('email', $email);
-
-        // render profile.html.
         echo Template::instance()->render('profile.html');
       } else {
-        $f3->reroute('/error');
+        $f3->reroute('/logout');
       }
     } else {
-      // something went wrong.
-      $f3->set('error_code', Error::UNABLE_TO_GET_DATA);
-      $f3->reroute('/error');
+      /* You are not logged in */
+      $f3->reroute('/login');
     }
   }
 }
