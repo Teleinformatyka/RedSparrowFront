@@ -3,7 +3,7 @@
 require_once('../lib/zmqmessage.php');
 
  $zmq = new ZMQMessage('tcp://aldorhost.pl:5555');
- echo "\n---------Login-------------\n";
+ echo "<br>---------Login------------<br>";
 
  $message = array(
 'id' => 300,
@@ -41,5 +41,16 @@ print_r($zmq->recv());
  $zmq->send($message);
 print_r($zmq->recv());
  echo "<br/>---------LOGIN end-------------<br/>";
+ 
+  echo "<br/>---------LOGIN-------------<br/>";
+ 
+ $message = array(
+'method' => 'login',
+'params' => array('login' => 'buli', 'password' => 'buli')
+);
+ $zmq->send($message);
+print_r($zmq->recv());
+ echo "<br/>---------LOGIN end-------------<br/>";
+ 
  
 ?>
