@@ -54,7 +54,6 @@ print_r($zmq->recv());
  echo "<br/>---------LOGIN end-------------<br/>";
   echo "<br/>---------user -------------<br/>";
   $message = array(
-'jsonrpc' => '2.0',
 'method' => 'usermethods-get_list_of_users',
 'id' => 6621
 );
