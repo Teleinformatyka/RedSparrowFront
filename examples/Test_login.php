@@ -55,8 +55,7 @@ print_r($zmq->recv());
   echo "<br/>---------user -------------<br/>";
   $message = array(
 'jsonrpc' => '2.0',
-'method' => 'usermethods-get_user_by_id',
-'params' => array('userId' => 300),
+'method' => 'usermethods-get_list_of_users',
 'id' => 6621
 );
 $zmq->send($message);
