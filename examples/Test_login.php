@@ -1,7 +1,7 @@
 
 <?php
 require_once('../lib/zmqmessage.php');
-echo "logowanie"
+
  $message = array(
 'id' => 1,
 'method' => 'login',
@@ -16,4 +16,13 @@ print_r($zmq->recv());
 );
  $zmq->send($message);
 print_r($zmq->recv());
+
+ $message = array(
+'id' => 1,
+'method' => 'login',
+'params' => array('login' => 'buli', 'password' => 'buli')
+);
+ $zmq->send($message);
+print_r($zmq->recv());
+
 ?>
