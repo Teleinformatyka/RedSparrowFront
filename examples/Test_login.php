@@ -52,11 +52,11 @@ print_r($zmq->recv());
 print_r($zmq->recv());
 
  echo "<br/>---------LOGIN end-------------<br/>";
-  echo "<br/>---------CHANG -------------<br/>";
+  echo "<br/>---------user -------------<br/>";
   $message = array(
 'jsonrpc' => '2.0',
-'method' => 'usermethods-edit_user',
-'params' => array('columnName' => 'password', 'value' => md5('trombka'), 'login' => 'buli'),
+'method' => 'usermethods-get_user_by_id',
+'params' => array('userId' => 6),
 'id' => 6621
 );
 $zmq->send($message);
