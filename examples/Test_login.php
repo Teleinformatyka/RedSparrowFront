@@ -2,6 +2,8 @@
 <?php
 require_once('../lib/zmqmessage.php');
 
+
+
  $message = array(
 'id' => 1,
 'method' => 'login',
