@@ -54,7 +54,7 @@ print_r($zmq->recv());
  echo "<br/>---------LOGIN end-------------<br/>";
   echo "<br/>---------user -------------<br/>";
   $message = array(
-'method' => 'usermethods-get_list_of_users',
+'method' => 'usermethods-get_numer_of_users',
 'id' => 6621
 );
 $zmq->send($message);
