@@ -12,8 +12,8 @@ require_once('../lib/zmqmessage.php');
 );
  $zmq->send($message);
 print_r($zmq->recv());
- echo "\n---------LOGIN end-------------<br/>";
-  echo "\n---------REGISTER -------------<br/>";
+ echo "<br/>---------LOGIN end-------------<br/>";
+  echo "<br/>---------REGISTER -------------<br/>";
  $message = array(
 'id' => 300,
 'method' => 'register',
@@ -21,7 +21,18 @@ print_r($zmq->recv());
 );
  $zmq->send($message);
 print_r($zmq->recv());
- echo "\n---------REGISTER end-------------<br/>";
+ echo "<br/>---------REGISTER end-------------<br/>";
+   echo "<br/>---------REGISTER -------------<br/>";
+ $message = array(
+'id' => 300,
+'method' => 'register',
+'params' => array('login' => 'buli1', 'password' => 'buli', 'email' => 'budddli@pp.pl', 'name' => 'buli', 'surname' => 'buli')
+);
+ $zmq->send($message);
+print_r($zmq->recv());
+ echo "<br/>---------REGISTER end-------------<br/>";
+ echo "<br/>---------LOGIN-------------<br/>";
+ 
  $message = array(
 'id' => 300,
 'method' => 'login',
@@ -29,5 +40,6 @@ print_r($zmq->recv());
 );
  $zmq->send($message);
 print_r($zmq->recv());
-
+ echo "<br/>---------LOGIN end-------------<br/>";
+ 
 ?>
