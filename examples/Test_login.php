@@ -6,7 +6,7 @@ require_once('../lib/zmqmessage.php');
  echo "<br>---------Login------------<br>";
 
  $message = array(
-'id' => 300,
+'id' => 1,
 'method' => 'login',
 'params' => array('login' => 'buli', 'password' => 'buli')
 );
@@ -50,7 +50,24 @@ print_r($zmq->recv());
 );
  $zmq->send($message);
 print_r($zmq->recv());
+
  echo "<br/>---------LOGIN end-------------<br/>";
- 
- 
+  echo "<br/>---------CHANG end-------------<br/>";
+  $message = array(
+'jsonrpc' => '2.0',
+'method' => 'usermethods-edit_user',
+'params' => array('columnName' => 'password', 'value' => md5('trombka'), 'login' => 'buli'),
+'id' => 6621
+);
+echo "<br>---------usermethods-edit_user-------------<br>";
+$zmq->send($message);
+print_r($zmq->recv());
+  $message = array(
+'method' => 'login',
+'params' => array('login' => 'buli', 'password' => 'trombka')
+);
+ $zmq->send($message);
+print_r($zmq->recv());
+
+ echo "<br/>---------LOGIN end-------------<br/>";
 ?>
