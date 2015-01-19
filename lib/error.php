@@ -12,7 +12,8 @@ class Error {
     INVALID_SURNAME      = 7,
     INVALID_RESPONSE     = 8,
     ALREADY_REGISTERED   = 9,
-    USER_DOES_NOT_EXIST  = 10;
+    USER_DOES_NOT_EXIST  = 10,
+    NO_FILE_UPLOADED     = 11;
 }
 
 ?>

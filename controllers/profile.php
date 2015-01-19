@@ -6,8 +6,8 @@ class Profile extends StaticClass {
     
     if($f3->get('SESSION.verified')){
       $login = $f3->get('SESSION.login');
-      $hash = $f3->get('SESSION.password');  
-      $user = User::load($login, $hash, false);  
+      $hash = $f3->get('SESSION.password');
+      $user = User::load($login, $hash, false);
       
       if($user->exists()){
         /* Template variables */

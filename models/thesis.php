@@ -4,6 +4,11 @@ class Thesis {
   private $m_vars;
   private $m_exists;
   
+  private function __construct(){
+    $this->m_exists = false;
+    $this->m_vars = array();
+  }
+  
   private function __load(){
     /* Load using ZMQ message */
     $raw = array(
@@ -60,6 +65,10 @@ class Thesis {
       
       if($response['id'] == $message['id'] && $response['error'] == NULL){
         $this->m_exists = true;
+        // Does this shit return id of the thesis?
+        // TODO
+        // CHECK
+        $this->m_vars['id'] = $response['result'];
       } else {
         break;
       }
@@ -68,7 +77,50 @@ class Thesis {
     return $this->m_exists ? Error::NO_ERROR : Error::INVALID_RESPONSE;
   }
   
+  /* Public member functions */
+  
+  public function save(){
+    return $this->__save();
+  }
+  
+  public function set($key, $value){
+    if(isset($this->m_vars[$key])){
+      $this->m_vars[$key] = $value;
+      return true;
+    }
+    
+    return false;
+  }
+  
+  public function get($key){
+    if(isset($this->m_vars[$key])){
+      return $this->m_vars[$key];
+    }
+    
+    return NULL;
+  }
+  
   /* Public static functions */
+  
+  public static function create($name, $userId, $supervisorId, $fosId, $filePath){
+    $object = new Thesis();
+    
+    $object->m_vars['thesis_name'] = $name;
+    $object->m_vars['user_id'] = $userId;
+    $object->m_vars['supervisor_id'] = $supervisorId;
+    $object->m_vars['fos_id'] = $fosId;
+    $object->m_vars['filepath'] = $filePath;
+    
+    return $object;
+  }
+  
+  public static function load($id){
+    $object = new Thesis();
+    
+    $object->m_vars['id'] = $id;
+    
+    return $object;
+  }
   
   public static function getListOfThesesByUserId($userId){
     $message = array(
@@ -79,7 +131,7 @@ class Thesis {
     );
     
     $zmq = new ZMQMessage();
-    $zmq->send($message);    
+    $zmq->send($message);
     $response = $zmq->recv();
     
     if($response['id'] == $message['id'] && $response['error'] == NULL){
