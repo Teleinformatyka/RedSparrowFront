@@ -23,13 +23,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="odd gradeX">
-                                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                                            <td>Damian Wilk</td>
-                                            <td>Anna Palik</td>
-                                            <td class="center">4.11.2014</td>
-                                            <td class="center">X</td>
-                                        </tr>
+                                        <repeat group="{{ @theseesBase }}" value="{{ @thesis }}">
+                                            <tr class="odd gradeX">
+                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                                <td>Damian Wilk</td>
+                                                <td>Anna Palik</td>
+                                                <td class="center">4.11.2014</td>
+                                                <td class="center">X</td>
+                                            </tr>
+                                        </repeat>
                                         <tr class="even gradeC">
                                             <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
                                             <td>Jan Porębski</td>
