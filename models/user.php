@@ -175,6 +175,46 @@ class User {
   public function exists(){
     return $this->m_exists;
   }
+  
+  /* Public static functions */
+  
+  public static function getListOfUsers(){
+    $message = array(
+      'jsonrpc' => '2.0',
+      'method' => 'usermethods-get_list_of_users',
+      'params' => array(),
+      'id' => mt_rand(1, 65537)
+    );
+    
+    $zmq = new ZMQMessage();
+    $zmq->send($message);    
+    $response = $zmq->recv();
+      
+    if($response['id'] == $message['id'] && $response['error'] == NULL){
+      return $response['result']['theses'];
+    }
+    
+    return array();
+  }
+
+  public static function getAmountOfUsers(){
+    $message = array(
+      'jsonrpc' => '2.0',
+      'method' => 'usermethods-get_numer_of_users',
+      'params' => array(),
+      'id' => mt_rand(1, 65537)
+    );
+    
+    $zmq = new ZMQMessage();
+    $zmq->send($message);    
+    $response = $zmq->recv();
+    
+    if($response['id'] == $message['id'] && $response['error'] == NULL){
+      return $response['result'];
+    }
+    
+    return 0;
+  }
 }
 
 ?>
