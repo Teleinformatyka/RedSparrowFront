@@ -1,26 +1,14 @@
-<include href="headerTemplate.html" />
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <div class="login-panel panel panel-default">
-        <img src="ui/images/redsparrow.png" style="width: 100%;" />
-        <div class="panel-heading">
-          <h3 class="panel-title">Wszystko ok</h3>
-        </div>
-        <div class="panel-body">
-          <div class="error">
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success" role="alert" id="success">
               <div><span class="sr-only"></span>
                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="float: left; margin: 2px; margin-right: 6px;"></span>
                   <p>{{ @success }}</p>           
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<include href="footerTemplate.html" />
+			
+			<script>
+			$(function(){
+				setTimeout(function() {
+					$('#success').fadeOut('fast');
+				}, 2000); // <-- time in milliseconds
+			});
+			</script>
