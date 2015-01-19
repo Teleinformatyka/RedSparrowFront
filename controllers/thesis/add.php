@@ -17,7 +17,7 @@ class Add extends StaticClass {
             $path = $_FILES['fileToUpload']['tmp_name'];
 
             /* Create new document */
-            $document = ThesisModel::create($name, $user->get('id'), $user->get('id'), 0, $path);
+            $document = ThesisModel::create($name, $user->get('id'), $user->get('id'), 1, $path);
 
             /* Save document */
             $f3->set('error', $document->save());
